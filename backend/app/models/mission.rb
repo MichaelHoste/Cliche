@@ -13,4 +13,12 @@ class Mission < ApplicationRecord
 
   validates :name, :presence => { :message => "Le nom est obligatoire." }
 
+  def self.enabled
+    where(:enabled => true)
+  end
+
+  def self.disabled
+    where(:enabled => false)
+  end
+
 end

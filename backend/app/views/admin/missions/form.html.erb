@@ -46,6 +46,14 @@
         </div>
 
         <div class="form-group">
+          <%= f.label :enabled, 'Enabled', :class => 'control-label col-md-3' %>
+
+          <div class="col-md-9">
+            <%= f.check_box :enabled, :class => 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
           <%= f.label :latitude, 'Latitude', :class => 'control-label col-md-3' %>
 
           <div class="col-md-9">

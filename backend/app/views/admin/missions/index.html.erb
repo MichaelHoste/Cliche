@@ -13,6 +13,7 @@
           <th>Accroche</th>
           <th>Photo</th>
           <th class="number">Points</th>
+          <th class="center">Activé</th>
           <th></th>
         </tr>
       </thead>
@@ -24,7 +25,7 @@
             <td><%= mission.tagline %></td>
             <td><img src="<%= mission.picture.url(:tiny) %>" /></td>
             <td class="number"><%= link_to mission.spots.count, admin_mission_spots_path(mission) %></td>
-
+            <td class="center"><%= mission.enabled? ? fa('check') : fa('times') %></td>
             <td class="actions">
               <%= link_to fa('edit'),   edit_admin_mission_path(mission), :class => 'btn btn-xs btn-default' %>
               <%= link_to fa('remove'), admin_mission_path(mission),      :class => 'btn btn-xs btn-danger', :data => { :confirm => "Supprimer cette mission ?" }, :method => :delete %>

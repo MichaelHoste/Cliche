@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807102728) do
+ActiveRecord::Schema.define(version: 20160811213706) do
 
   create_table "missions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string   "name"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20160807102728) do
     t.string   "picture"
     t.decimal  "latitude",                  precision: 12, scale: 8
     t.decimal  "longitude",                 precision: 12, scale: 8
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
+    t.boolean  "enabled",                                            default: false
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
   end
 
   create_table "spots", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

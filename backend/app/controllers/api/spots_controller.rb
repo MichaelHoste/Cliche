@@ -9,6 +9,6 @@ class Api::SpotsController < Api::BaseController
   private
 
   def find_mission
-    @mission = Mission.find(params[:mission_id])
+    @mission = Mission.enabled.find(params[:mission_id])
   end
 end

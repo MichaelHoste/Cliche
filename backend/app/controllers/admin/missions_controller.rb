@@ -45,7 +45,7 @@ class Admin::MissionsController < Admin::BaseController
 
   def strong_params
     params.require(:mission).permit(
-      :name, :tagline, :description, :picture, :picture_cache, :latitude, :longitude
+      :name, :tagline, :description, :picture, :picture_cache, :latitude, :longitude, :enabled
     )
   end
 end
