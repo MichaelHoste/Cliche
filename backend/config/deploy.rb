@@ -1,6 +1,6 @@
 lock '3.6.0'
 
-set :repo_url,  'git@github.com:micbelgique/DevCamp2016-Team6.git'
+set :repo_url,  'git@github.com:michaelhoste/cliche.git'
 set :repo_tree, 'backend'
 
 set :keep_releases, 30
