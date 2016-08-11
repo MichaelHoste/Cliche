@@ -14,6 +14,22 @@ class Admin::SpotsController < Admin::BaseController
   def create
     @spot = @mission.spots.new(strong_params)
 
+    exif =  MiniMagick::Image.new(@spot.picture.path).exif
+    lat_deg, lat_min, lat_sec = exif['GPSLatitude'].split(', ')
+    lon_deg, lon_min, lon_sec = exif['GPSLongitude'].split(', ')
+
+    #raise [compute(lat_deg), compute(lat_min), compute(lat_sec), compute(lon_deg), compute(lon_min), compute(lon_sec)].inspect
+
+    lat_deg = compute(lat_deg)
+    lat_min = compute(lat_min)
+    lat_sec = compute(lat_sec)
+    lon_deg = compute(lon_deg)
+    lon_min = compute(lon_min)
+    lon_sec = compute(lon_sec)
+
+    @spot.latitude  = lat_deg+lat_min/60.0+lat_sec/3600.0
+    @spot.longitude = lon_deg+lon_min/60.0+lon_sec/3600.0
+
     if @spot.save
       redirect_to admin_mission_spots_path(@mission)
     else
@@ -45,6 +61,10 @@ class Admin::SpotsController < Admin::BaseController
   end
 
   private
+
+  def compute(value)
+    value.split('/').first.to_f/value.split('/').last.to_f
+  end
 
   def find_mission
     @mission = Mission.find(params[:mission_id])

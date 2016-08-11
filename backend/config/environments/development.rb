@@ -1,6 +1,6 @@
 Rails.application.configure do
 
-  APP_HOSTNAME = "http://cliche-backend.dev"
+  APP_HOSTNAME = "http://localhost:3000"
 
   # Settings specified here will take precedence over those in config/application.rb.
 
